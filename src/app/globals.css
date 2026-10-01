@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --primary-navy: #0b2545;
+  --primary-navy-dark: #07172c;
+  --secondary-blue: #0284c7;
+  --accent-orange: #ea580c;
+  --accent-orange-hover: #c2410c;
+  --accent-flame: #f97316;
+  --bg-white: #ffffff;
+  --bg-light: #f8fafc;
+  --bg-slate: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+  --border-light: #e2e8f0;
+}
+
+/* Light Theme Strict Enactment - Zero Dark Mode */
+html {
+  color-scheme: light;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Industrial Grid & Precision Background Accents */
+.bg-grid-blueprint {
+  background-image: 
+    linear-gradient(to right, rgba(11, 37, 69, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 37, 69, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-dot-industrial {
+  background-image: radial-gradient(rgba(11, 37, 69, 0.08) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+/* Engineering Spec Card */
+.engineering-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05);
+  transition: all 0.25s ease-in-out;
+}
+
+.engineering-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(11, 37, 69, 0.08), 0 8px 10px -6px rgba(11, 37, 69, 0.04);
+}
+
+/* Precision Focus Rings for WCAG */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
