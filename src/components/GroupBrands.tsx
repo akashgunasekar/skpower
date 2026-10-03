@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { GROUP_BRANDS } from "@/data/site";
 
 export default function GroupBrands() {
@@ -31,39 +31,19 @@ export default function GroupBrands() {
         {/* 3 Brand Cards Grid: Displaying all three brands in original identities */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {GROUP_BRANDS.map((brand) => {
-            const isCurrent = brand.isCurrentBrand;
-
             return (
               <div
                 key={brand.id}
-                className={`relative bg-white rounded-2xl border p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 shadow-2xs hover:shadow-lg ${
-                  isCurrent
-                    ? "border-orange-400 ring-2 ring-orange-100 shadow-sm"
-                    : "border-slate-200"
-                } ${brand.accentHover}`}
+                className={`relative bg-white rounded-2xl border border-slate-200 p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 shadow-2xs hover:shadow-lg ${brand.accentHover}`}
               >
-                {/* Visual Highlight indicator for current brand */}
-                {isCurrent && (
-                  <div className="absolute -top-3 left-6 sm:left-8 bg-orange-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
-                    Current Website
-                  </div>
-                )}
-
                 <div>
-                  {/* Category Badge & Active Status */}
-                  <div className="flex items-center justify-between gap-2 mb-6">
+                  {/* Category Badge */}
+                  <div className="flex items-center gap-2 mb-6">
                     <span
                       className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border ${brand.badgeStyle}`}
                     >
                       {brand.badgeText}
                     </span>
-
-                    {isCurrent && (
-                      <span className="text-xs font-semibold text-orange-600 flex items-center gap-1">
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Active Portal</span>
-                      </span>
-                    )}
                   </div>
 
                   {/* Clean White Logo Container (Preserves original brand colors without alterations) */}

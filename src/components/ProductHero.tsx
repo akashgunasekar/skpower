@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -9,13 +9,10 @@ import {
   Phone,
   ShieldCheck,
   Check,
-  Camera,
-  FileCode2,
-  CheckCircle2,
   Sparkles,
+  Flame,
 } from "lucide-react";
 import { Product } from "@/data/products";
-import ProductSchematicVisual from "./ProductSchematicVisual";
 import Breadcrumbs from "./Breadcrumbs";
 import { SITE_CONFIG } from "@/data/site";
 
@@ -25,7 +22,6 @@ interface ProductHeroProps {
 }
 
 export default function ProductHero({ product, onRequestQuote }: ProductHeroProps) {
-  const [activeMedia, setActiveMedia] = useState<"schematic" | "photo">("schematic");
   const isPlanetary = product.schematicType === "planetary";
 
   const handleQuoteClick = (e: React.MouseEvent) => {
@@ -52,120 +48,83 @@ export default function ProductHero({ product, onRequestQuote }: ProductHeroProp
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Interactive Visual CAD Schematic & Machinery Media (6 cols) */}
+          {/* Left Column: Direct Real Machinery Photo Showcase (6 cols) */}
           <div className="lg:col-span-6 space-y-4">
             {/* Main Media Container */}
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              {/* Media Mode Switcher Tabs */}
-              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/80 px-4 py-2.5 text-xs">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                  {isPlanetary ? "MODEL // SK-PM-GAS" : "MODEL // SK-CM-B2B"}
+              {/* Media Header Tag */}
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/90 px-4 py-3 text-xs">
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${isPlanetary ? "bg-orange-600" : "bg-sky-600"}`} />
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-800">
+                    {isPlanetary ? "MODEL // SK-PM-GAS" : "MODEL // SK-CM-B2B"}
+                  </span>
+                </div>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-700 shadow-2xs">
+                  <Sparkles className="w-3 h-3 text-orange-600" />
+                  Production Machinery
                 </span>
+              </div>
 
-                <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200">
-                  <button
-                    type="button"
-                    onClick={() => setActiveMedia("schematic")}
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
-                      activeMedia === "schematic"
-                        ? "bg-orange-50 text-orange-700 shadow-2xs font-bold"
-                        : "text-slate-600 hover:text-slate-900"
-                    }`}
-                  >
-                    <FileCode2 className="w-3.5 h-3.5" />
-                    <span>CAD Schematic</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveMedia("photo")}
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
-                      activeMedia === "photo"
-                        ? "bg-orange-50 text-orange-700 shadow-2xs font-bold"
-                        : "text-slate-600 hover:text-slate-900"
-                    }`}
-                  >
-                    <Camera className="w-3.5 h-3.5" />
-                    <span>Machinery Photo</span>
-                  </button>
+              {/* Viewport: Full-Bleed Product Photography */}
+              <div className="p-3 sm:p-4 bg-white">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-100 border border-slate-200 group">
+                  <Image
+                    src={product.image}
+                    alt={`${product.name} - SK Power Cook Machinery Commercial Food Preparation`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent opacity-70 group-hover:opacity-60 transition-opacity" />
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                      <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-600 shadow-xs">
+                        Commercial Heavy-Duty Build
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-white shadow-xs">
+                        <Flame className="w-3 h-3" />
+                        Gas / Induction
+                      </span>
+                    </div>
+                    <p className="text-sm sm:text-base font-extrabold tracking-tight">
+                      {product.name}
+                    </p>
+                    <p className="text-[11px] text-slate-200 mt-0.5">
+                      SK Power Cook Machinery · Maxwell Group Enterprise
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Viewport: Schematic or Photo */}
-              <div className="p-3 sm:p-4 bg-white">
-                {activeMedia === "schematic" ? (
-                  <ProductSchematicVisual
-                    type={product.schematicType}
-                    title={product.name}
-                    badge={product.heroBadge}
-                  />
-                ) : (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-100 border border-slate-200">
-                    <Image
-                      src="/images/sk_power_cook_machinery.jpg"
-                      alt={`${product.name} - SK Power Cook Machinery Commercial Food Preparation`}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-600 mb-1">
-                        Commercial Heavy-Duty Build
-                      </span>
-                      <p className="text-xs font-bold">
-                        {product.name}
-                      </p>
-                      <p className="text-[11px] text-slate-300">
-                        SK Power Cook Machinery · Maxwell Group
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Thumbnail Quick Selector */}
-              <div className="grid grid-cols-2 gap-2 border-t border-slate-200 bg-slate-50 p-2.5">
-                <button
-                  type="button"
-                  onClick={() => setActiveMedia("schematic")}
-                  className={`flex items-center gap-2 p-2 rounded-lg border text-left transition-all cursor-pointer ${
-                    activeMedia === "schematic"
-                      ? "border-orange-500 bg-white shadow-2xs ring-1 ring-orange-200"
-                      : "border-slate-200 bg-slate-100/60 hover:bg-white"
-                  }`}
-                >
-                  <FileCode2 className={`w-4 h-4 ${activeMedia === "schematic" ? "text-orange-600" : "text-slate-500"}`} />
-                  <div>
-                    <span className="block text-[11px] font-bold text-slate-800">
-                      Technical Blueprint
-                    </span>
-                    <span className="block text-[10px] text-slate-500">
-                      CAD mechanism schematic
-                    </span>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveMedia("photo")}
-                  className={`flex items-center gap-2 p-2 rounded-lg border text-left transition-all cursor-pointer ${
-                    activeMedia === "photo"
-                      ? "border-orange-500 bg-white shadow-2xs ring-1 ring-orange-200"
-                      : "border-slate-200 bg-slate-100/60 hover:bg-white"
-                  }`}
-                >
-                  <Camera className={`w-4 h-4 ${activeMedia === "photo" ? "text-orange-600" : "text-slate-500"}`} />
-                  <div>
-                    <span className="block text-[11px] font-bold text-slate-800">
-                      Machinery Showcase
-                    </span>
-                    <span className="block text-[10px] text-slate-500">
-                      Commercial production unit
-                    </span>
-                  </div>
-                </button>
+              {/* Bottom Feature Badges */}
+              <div className="grid grid-cols-3 gap-2 border-t border-slate-200 bg-slate-50/80 p-3 text-center">
+                <div className="bg-white p-2 rounded-lg border border-slate-200/80">
+                  <span className="block text-[11px] font-extrabold text-slate-800">
+                    SS 304
+                  </span>
+                  <span className="block text-[10px] text-slate-500 font-medium">
+                    Food Contact Build
+                  </span>
+                </div>
+                <div className="bg-amber-50/70 p-2 rounded-lg border border-amber-200/80">
+                  <span className="block text-[11px] font-extrabold text-amber-950 flex items-center justify-center gap-1">
+                    <Flame className="w-3 h-3 text-orange-600" />
+                    Gas / Induction
+                  </span>
+                  <span className="block text-[10px] text-amber-800 font-medium">
+                    Dual Thermal Option
+                  </span>
+                </div>
+                <div className="bg-white p-2 rounded-lg border border-slate-200/80">
+                  <span className="block text-[11px] font-extrabold text-slate-800">
+                    Motorized
+                  </span>
+                  <span className="block text-[10px] text-slate-500 font-medium">
+                    {isPlanetary ? "Planetary Agitation" : "Scraper Stirring"}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -187,19 +146,26 @@ export default function ProductHero({ product, onRequestQuote }: ProductHeroProp
           <div className="lg:col-span-6 space-y-6">
             <div>
               {/* Dynamic Badge for Planetary vs Colino */}
-              <div
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border mb-3 ${
-                  isPlanetary
-                    ? "bg-orange-50 text-orange-700 border-orange-200"
-                    : "bg-sky-50 text-sky-700 border-sky-200"
-                }`}
-              >
-                <span
-                  className={`w-1.5 h-1.5 rounded-full ${
-                    isPlanetary ? "bg-orange-600" : "bg-sky-600"
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <div
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${
+                    isPlanetary
+                      ? "bg-orange-50 text-orange-700 border-orange-200"
+                      : "bg-sky-50 text-sky-700 border-sky-200"
                   }`}
-                />
-                <span>{product.heroBadge}</span>
+                >
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      isPlanetary ? "bg-orange-600" : "bg-sky-600"
+                    }`}
+                  />
+                  <span>{product.heroBadge}</span>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border bg-amber-50 text-amber-900 border-amber-200 shadow-2xs">
+                  <Flame className="w-3.5 h-3.5 text-orange-600" />
+                  <span>Gas / Induction Heating</span>
+                </div>
               </div>
 
               {/* H1 Title */}
@@ -270,7 +236,7 @@ export default function ProductHero({ product, onRequestQuote }: ProductHeroProp
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back to All Mixing Machinery</span>
+                <span>Back to All Food Processing Machinery</span>
               </Link>
             </div>
           </div>

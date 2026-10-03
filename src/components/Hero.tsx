@@ -24,31 +24,31 @@ export default function Hero({ onRequestQuote }: HeroProps) {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
-              <span>COMMERCIAL MIXING MACHINERY</span>
+              <span>COMMERCIAL FOOD PROCESSING MACHINERY</span>
             </div>
 
             {/* Main Heading */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
-              Professional Mixing Solutions for{" "}
+              Commercial Food Processing Solutions for{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700">
-                Commercial Kitchens
+                Professional Kitchens
               </span>
             </h1>
 
             {/* Supporting Text */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-              Reliable commercial mixing machines designed for professional food preparation environments. Engineered for uniform batch quality, mechanical dependability, and heavy culinary workloads.
+              Reliable commercial food processing solution machinery designed for professional food preparation environments. Engineered for uniform batch quality, mechanical dependability, and heavy culinary workloads.
             </p>
 
             {/* Two Confirmed Machine Tags */}
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
                 <Flame className="w-3.5 h-3.5 text-orange-600" />
-                Planetary Mixer Machine – Gas
+                Planetary Mixer Machine – Gas / Induction
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
                 <Cpu className="w-3.5 h-3.5 text-sky-600" />
-                Colino Mixer Machine
+                Colino Mixer Machine – Gas / Induction
               </span>
             </div>
 
@@ -118,11 +118,16 @@ export default function Hero({ onRequestQuote }: HeroProps) {
 
                   {/* Machine Overlay Label */}
                   <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-600 mb-1">
-                      SK Power Cook Machinery
-                    </span>
+                    <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-orange-600">
+                        SK Power Cook Machinery
+                      </span>
+                      <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-white">
+                        Gas / Induction
+                      </span>
+                    </div>
                     <p className="text-sm font-bold tracking-tight">
-                      Commercial Mixing & Thermal Food Processing
+                      Commercial Food Processing & Thermal Machinery
                     </p>
                     <p className="text-[11px] text-slate-200 mt-0.5">
                       Professional Machinery for Commercial Food Operations

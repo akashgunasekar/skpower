@@ -13,7 +13,7 @@ interface QuoteModalProps {
 export default function QuoteModal({
   isOpen,
   onClose,
-  productName = "Planetary Mixer Machine – Gas",
+  productName = "Planetary Mixer Machine – Gas / Induction",
 }: QuoteModalProps) {
   // Handle escape key
   useEffect(() => {

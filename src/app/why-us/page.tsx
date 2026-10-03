@@ -10,7 +10,7 @@ import GroupBrands from "@/components/GroupBrands";
 import QuoteCTA from "@/components/QuoteCTA";
 
 export const metadata = constructMetadata({
-  title: "Why SK Power Cook Machinery | Professional Mixing Equipment",
+  title: "Why SK Power Cook Machinery | Commercial Food Processing Machinery",
   description:
     "Discover why commercial kitchens and food preparation facilities rely on SK Power Cook Machinery. Commercial focus, practical engineering, dedicated B2B support, and Maxwell Group backing.",
   canonicalPath: "/why-us",
@@ -44,7 +44,7 @@ export default function WhyUsPage() {
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              A deliberate focus on commercial food mixing machinery, practical engineering principles, and the collaborative strength of the Maxwell Group ecosystem.
+              A deliberate focus on commercial food processing solution machinery, practical engineering principles, and the collaborative strength of the Maxwell Group ecosystem.
             </p>
           </div>
         </div>

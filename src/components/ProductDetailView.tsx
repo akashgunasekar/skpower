@@ -163,9 +163,14 @@ export default function ProductDetailView({ product, otherProduct }: ProductDeta
 
           <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-slate-300 transition-colors">
             <div className="space-y-2 text-center md:text-left">
-              <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-50 text-sky-700 border border-sky-200">
-                {otherProduct.heroBadge}
-              </span>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-50 text-sky-700 border border-sky-200">
+                  {otherProduct.heroBadge}
+                </span>
+                <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-900 border border-amber-200">
+                  Gas / Induction
+                </span>
+              </div>
               <h4 className="text-xl font-extrabold text-slate-950">
                 {otherProduct.name}
               </h4>

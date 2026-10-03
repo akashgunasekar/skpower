@@ -4,13 +4,14 @@ import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import GroupBrands from "@/components/GroupBrands";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { SITE_CONFIG } from "@/data/site";
 import ContactClient from "./ContactClient";
 
 export const metadata = constructMetadata({
   title: "Contact SK Power Cook Machinery | Request a Quote",
   description:
-    "Contact SK Power Cook Machinery for commercial mixing equipment quotes, technical sizing advice, and food preparation machinery consultation.",
+    "Contact SK Power Cook Machinery for commercial food processing machinery quotes, technical sizing advice, and food preparation machinery consultation.",
   canonicalPath: "/contact",
 });
 
@@ -42,7 +43,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Tell us what you need and our team can help you identify the right mixing equipment for your application.
+              Tell us what you need and our team can help you identify the right commercial food processing machinery for your application.
             </p>
           </div>
         </div>
@@ -157,7 +158,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 py-3 px-5 rounded-xl text-xs font-bold uppercase tracking-wider bg-green-600 hover:bg-green-700 text-white shadow-xs transition-colors"
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <WhatsAppIcon className="w-4 h-4 fill-current" />
                     <span>Chat on WhatsApp</span>
                   </a>
                 </div>

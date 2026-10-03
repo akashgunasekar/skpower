@@ -15,15 +15,15 @@ export default function HomeIntro() {
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
-              Built for Professional Mixing
+              Built for Commercial Food Processing
             </h2>
 
             <div className="space-y-4 text-base text-slate-600 leading-relaxed font-normal">
               <p>
-                SK Power Cook Machinery focuses on commercial mixing equipment designed for professional food preparation environments. Operating under the Maxwell Group, our purpose is to supply robust, dependable mixing solutions engineered for commercial kitchens, catering facilities, and food preparation operations.
+                SK Power Cook Machinery focuses on commercial food processing solution machinery designed for professional food preparation environments. Operating under the Maxwell Group, our purpose is to supply robust, dependable food processing and mixing solutions engineered for commercial kitchens, catering facilities, and food preparation operations.
               </p>
               <p>
-                Rather than offering an unfocused catalogue, we concentrate strictly on mixing machinery designed to handle demanding culinary tasks—enabling consistent batch uniformity, operational durability, and labor-saving food processing routines.
+                Rather than offering an unfocused catalogue, we concentrate strictly on commercial food processing machinery designed to handle demanding culinary tasks—enabling consistent batch uniformity, operational durability, and labor-saving food preparation routines.
               </p>
             </div>
 
@@ -49,7 +49,7 @@ export default function HomeIntro() {
                   Focused Machinery Range
                 </h3>
                 <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Specialized development centered on planetary and commercial mixing solutions for culinary professionals.
+                  Specialized development centered on planetary and commercial food processing solution machinery for culinary professionals.
                 </p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function HomeIntro() {
                   Maxwell Group Association
                 </h3>
                 <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Direct synergy with Maxwell Group's commercial kitchen and induction technology engineering ecosystem.
+                  Direct synergy with Maxwell Group&apos;s commercial kitchen and induction technology engineering ecosystem.
                 </p>
               </div>
             </div>

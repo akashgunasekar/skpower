@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-600 leading-relaxed pr-4">
-              SK Power Cook Machinery focuses on commercial mixing equipment engineered for professional food preparation environments, catering commissaries, and commercial kitchens.
+              SK Power Cook Machinery focuses on commercial food processing solution machinery engineered for professional food preparation environments, catering commissaries, and commercial kitchens.
             </p>
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
@@ -58,7 +58,7 @@ export default function Footer() {
           {/* Col 3: Mixing Machinery (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-2">
-              Mixing Machinery
+              Food Processing Machinery
             </h4>
             <ul className="space-y-3 text-sm">
               {PRODUCTS.map((prod) => (

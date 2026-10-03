@@ -13,7 +13,7 @@ export default function ContactClient() {
     ? productParam
     : applicationParam
     ? `General Enquiry (${applicationParam})`
-    : "Planetary Mixer Machine – Gas";
+    : "Planetary Mixer Machine – Gas / Induction";
 
   return <ContactForm initialProduct={initialProduct} />;
 }

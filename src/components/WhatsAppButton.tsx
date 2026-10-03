@@ -1,71 +1,37 @@
 "use client";
 
-import React, { useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import React from "react";
 import { SITE_CONFIG } from "@/data/site";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function WhatsAppButton() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
-      {/* Popover Bubble */}
-      {isOpen && (
-        <div className="mb-3 w-72 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-2.5">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
-                Maxwell Group WhatsApp
-              </span>
-            </div>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-slate-700 p-1"
-              aria-label="Close WhatsApp prompt"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          <p className="text-xs text-slate-600 mb-3 leading-relaxed">
-            Connect directly with our commercial mixing machinery team for technical specifications and quotation queries.
-          </p>
-
-          <a
-            href={SITE_CONFIG.contact.whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-green-600 hover:bg-green-700 text-white shadow-xs transition-colors"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
-          </a>
-        </div>
-      )}
-
-      {/* Floating Action Button */}
-      <div className="flex items-center gap-2">
-        <a
-          href={SITE_CONFIG.contact.whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-200 shadow-md text-xs font-bold text-slate-800 hover:text-green-700 hover:border-green-300 transition-all"
-        >
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+    <aside aria-label="WhatsApp Contact" className="fixed bottom-6 right-6 z-50">
+      <a
+        href={SITE_CONFIG.contact.whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Chat with SK Power Cook Machinery on WhatsApp at ${SITE_CONFIG.contact.whatsapp}`}
+        title={`Chat on WhatsApp (${SITE_CONFIG.contact.whatsapp})`}
+        className="group flex items-center gap-2.5 cursor-pointer select-none"
+      >
+        {/* Desktop floating pill label */}
+        <span className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white text-slate-800 text-xs font-bold shadow-lg border border-slate-200/80 transition-all duration-300 group-hover:text-[#25D366] group-hover:border-emerald-300 group-hover:shadow-xl">
+          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
           <span>Chat on WhatsApp</span>
-        </a>
+        </span>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-13 h-13 rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-600/30 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
-          aria-label="Chat on WhatsApp with SK Power Cook Machinery"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      </div>
-    </div>
+        {/* Real Official WhatsApp Icon Floating Button */}
+        <div className="relative">
+          {/* Subtle pulse ring behind button */}
+          <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-35 animate-ping pointer-events-none" />
+
+          {/* Main WhatsApp Circular Button */}
+          <div className="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl shadow-emerald-600/35 hover:shadow-2xl hover:shadow-emerald-600/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 active:scale-95">
+            <WhatsAppIcon className="w-7 h-7 text-white fill-current" />
+          </div>
+        </div>
+      </a>
+    </aside>
   );
 }

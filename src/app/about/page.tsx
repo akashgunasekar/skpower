@@ -9,9 +9,9 @@ import GroupBrands from "@/components/GroupBrands";
 import QuoteCTA from "@/components/QuoteCTA";
 
 export const metadata = constructMetadata({
-  title: "About SK Power Cook Machinery | Commercial Mixing Equipment",
+  title: "About SK Power Cook Machinery | Commercial Food Processing Machinery",
   description:
-    "Learn about SK Power Cook Machinery, a specialized Maxwell Group brand dedicated to professional commercial mixing machinery for professional food preparation environments.",
+    "Learn about SK Power Cook Machinery, a specialized Maxwell Group brand dedicated to commercial food processing machinery and solutions for professional food preparation environments.",
   canonicalPath: "/about",
 });
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              A specialized manufacturer and supplier of commercial mixing machinery, engineered for demanding professional food preparation environments.
+              A specialized manufacturer and supplier of commercial food processing machinery and solutions, engineered for demanding professional food preparation environments.
             </p>
           </div>
         </div>
@@ -60,15 +60,15 @@ export default function AboutPage() {
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
-                Focused on Commercial Food Mixing Solutions
+                Focused on Commercial Food Processing Solutions
               </h2>
 
               <div className="space-y-4 text-base text-slate-600 leading-relaxed font-normal">
                 <p>
-                  SK Power Cook Machinery focuses on commercial mixing machinery and professional food preparation equipment. Rather than attempting to serve every category of generic industrial manufacturing, our engineering and supply operations are deliberately centered on commercial culinary mixing machinery.
+                  SK Power Cook Machinery focuses on commercial food processing solution machinery and professional food preparation equipment. Rather than attempting to serve every category of generic industrial manufacturing, our engineering and supply operations are deliberately centered on commercial culinary food processing and mixing machinery.
                 </p>
                 <p>
-                  Operating as part of the broader Maxwell Group ecosystem, SK Power Cook Machinery complements group capabilities in commercial kitchen solutions and induction cooking technology by providing dedicated, heavy-duty mixing machinery for commercial kitchens, catering operations, and central food commissaries.
+                  Operating as part of the broader Maxwell Group ecosystem, SK Power Cook Machinery complements group capabilities in commercial kitchen solutions and induction cooking technology by providing dedicated, heavy-duty food processing machinery for commercial kitchens, catering operations, and central food commissaries.
                 </p>
                 <p>
                   Our equipment is designed around practical culinary realities: repeatable texture, thorough ingredient agitation, hygienic maintenance, and reliable mechanical construction built for daily continuous operational shifts.
@@ -108,7 +108,7 @@ export default function AboutPage() {
                       Engineering Benchmark
                     </p>
                     <p className="text-sm font-bold">
-                      Commercial Mixing & Thermal Agitation
+                      Commercial Food Processing & Thermal Agitation
                     </p>
                   </div>
                 </div>

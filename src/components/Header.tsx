@@ -25,9 +25,11 @@ export default function Header({ onRequestQuote }: HeaderProps) {
   }, []);
 
   // Close mobile drawer on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMobileMenuOpen(false);
-  }, [pathname]);
+  }
 
   const handleQuoteClick = (e: React.MouseEvent) => {
     if (onRequestQuote) {
@@ -44,7 +46,7 @@ export default function Header({ onRequestQuote }: HeaderProps) {
           <div className="flex items-center space-x-6">
             <span className="font-medium text-slate-700 flex items-center gap-1.5">
               <span className="inline-block w-2 h-2 rounded-full bg-orange-600"></span>
-              A Maxwell Group Enterprise · Commercial Mixing Machinery
+              A Maxwell Group Enterprise · Commercial Food Processing Machinery & Solutions
             </span>
             <span className="text-slate-300">|</span>
             <a
@@ -229,7 +231,7 @@ export default function Header({ onRequestQuote }: HeaderProps) {
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium text-slate-700 hover:text-orange-600 hover:bg-orange-50/50"
                   >
-                    <span>Planetary Mixer Machine – Gas</span>
+                    <span>Planetary Mixer Machine (Gas / Induction)</span>
                     <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                   </Link>
                   <Link
@@ -237,7 +239,7 @@ export default function Header({ onRequestQuote }: HeaderProps) {
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium text-slate-700 hover:text-orange-600 hover:bg-orange-50/50"
                   >
-                    <span>Colino Mixer Machine</span>
+                    <span>Colino Mixer Machine (Gas / Induction)</span>
                     <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                   </Link>
                 </div>

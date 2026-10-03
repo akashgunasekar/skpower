@@ -9,9 +9,9 @@ import GroupBrands from "@/components/GroupBrands";
 import QuoteCTA from "@/components/QuoteCTA";
 
 export const metadata = constructMetadata({
-  title: "Commercial Mixing Machines | SK Power Cook Machinery",
+  title: "Commercial Food Processing Machinery | SK Power Cook Machinery",
   description:
-    "Explore commercial mixing machinery by SK Power Cook Machinery. Focused equipment including Planetary Mixer Machine – Gas and Colino Mixer Machine for professional food preparation environments.",
+    "Explore commercial food processing machinery by SK Power Cook Machinery. Focused equipment including Planetary Mixer Machine – Gas / Induction and Colino Mixer Machine – Gas / Induction for professional food preparation environments.",
   canonicalPath: "/products",
 });
 
@@ -39,11 +39,11 @@ export default function ProductsPage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-              Commercial Mixing Machines
+              Commercial Food Processing Machinery
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Focused equipment solutions for professional food preparation. Purpose-engineered mixing machinery for commercial kitchens, catering commissaries, and food preparation units.
+              Focused equipment solutions for professional food operations. Purpose-engineered food processing machinery for commercial kitchens, catering commissaries, and food preparation units.
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="EQUIPMENT SELECTION"
-            title="Our Mixing Machines"
+            title="Food Processing & Mixing Machinery"
             description="Focused equipment solutions for professional food preparation. Each unit is supplied via commercial consultation to match facility batch volumes."
             align="center"
             accentColor="orange"

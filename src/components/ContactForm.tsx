@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Send, CheckCircle2, MessageSquare, AlertCircle, Phone, Mail, MapPin } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { SITE_CONFIG } from "@/data/site";
 
 interface ContactFormProps {
@@ -21,7 +22,7 @@ export default function ContactForm({
     phone: "",
     email: "",
     location: "",
-    productInterest: initialProduct || "Planetary Mixer Machine – Gas",
+    productInterest: initialProduct || "Planetary Mixer Machine – Gas / Induction",
     message: "",
   });
 
@@ -29,11 +30,13 @@ export default function ContactForm({
   const [submitted, setSubmitted] = useState(false);
   const [submissionType, setSubmissionType] = useState<"whatsapp" | "email">("whatsapp");
 
-  useEffect(() => {
+  const [prevProduct, setPrevProduct] = useState(initialProduct);
+  if (initialProduct !== prevProduct) {
+    setPrevProduct(initialProduct);
     if (initialProduct) {
       setFormData((prev) => ({ ...prev, productInterest: initialProduct }));
     }
-  }, [initialProduct]);
+  }
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -68,7 +71,7 @@ export default function ContactForm({
     }
 
     // Prepare message body
-    const enquiryDetails = `Commercial Mixing Machinery Enquiry:
+    const enquiryDetails = `Commercial Food Processing Machinery Enquiry:
 - Name: ${formData.name}
 - Company: ${formData.companyName || "Not specified"}
 - Phone: ${formData.phone}
@@ -78,7 +81,8 @@ export default function ContactForm({
 - Message / Scope: ${formData.message || "Requesting technical specifications and quote."}`;
 
     if (submissionType === "whatsapp") {
-      const waUrl = `https://wa.me/918925857821?text=${encodeURIComponent(enquiryDetails)}`;
+      const waDigits = SITE_CONFIG.contact.whatsapp.replace(/[^0-9]/g, "");
+      const waUrl = `https://wa.me/${waDigits}?text=${encodeURIComponent(enquiryDetails)}`;
       window.open(waUrl, "_blank");
     } else {
       const mailtoUrl = `mailto:${SITE_CONFIG.contact.email}?subject=${encodeURIComponent(
@@ -101,7 +105,7 @@ export default function ContactForm({
       phone: "",
       email: "",
       location: "",
-      productInterest: "Planetary Mixer Machine – Gas",
+      productInterest: "Planetary Mixer Machine – Gas / Induction",
       message: "",
     });
     setErrors({});
@@ -234,8 +238,8 @@ export default function ContactForm({
             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 text-sm text-slate-900 bg-white transition-colors cursor-pointer"
             required
           >
-            <option value="Planetary Mixer Machine – Gas">Planetary Mixer Machine – Gas</option>
-            <option value="Colino Mixer Machine">Colino Mixer Machine</option>
+            <option value="Planetary Mixer Machine – Gas / Induction">Planetary Mixer Machine – Gas / Induction</option>
+            <option value="Colino Mixer Machine – Gas / Induction">Colino Mixer Machine – Gas / Induction</option>
             <option value="General Enquiry">General Enquiry</option>
           </select>
           {errors.productInterest && (
@@ -274,7 +278,7 @@ export default function ContactForm({
                 : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
             }`}
           >
-            <MessageSquare className="w-4 h-4 text-green-600" />
+            <WhatsAppIcon className="w-4 h-4 text-[#25D366] fill-current" />
             <span>Direct WhatsApp</span>
           </button>
 

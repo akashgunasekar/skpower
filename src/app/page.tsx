@@ -3,9 +3,9 @@ import HomeClient from "./HomeClient";
 import { constructMetadata } from "@/lib/seo";
 
 export const metadata = constructMetadata({
-  title: "SK Power Cook Machinery | Commercial Mixing Machines",
+  title: "SK Power Cook Machinery | Commercial Food Processing Machinery & Solutions",
   description:
-    "SK Power Cook Machinery provides professional commercial mixing machines including Planetary Mixer Machine – Gas and Colino Mixer Machine for professional food preparation environments.",
+    "SK Power Cook Machinery provides commercial food processing solution machinery including Planetary Mixer Machine – Gas / Induction and Colino Mixer Machine – Gas / Induction for professional food preparation environments.",
   canonicalPath: "",
 });
 

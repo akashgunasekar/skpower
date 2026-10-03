@@ -47,7 +47,7 @@ export default function HomeClient() {
           <SectionHeading
             eyebrow="ENGINEERING ADVANTAGES"
             title="Operational Value in Professional Kitchens"
-            description="How our commercial mixing machinery addresses core operational challenges in high-output food preparation."
+            description="How our commercial food processing machinery addresses core operational challenges in high-output food preparation."
             align="center"
             accentColor="orange"
           />

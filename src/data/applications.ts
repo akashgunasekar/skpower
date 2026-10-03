@@ -30,7 +30,7 @@ export const APPLICATIONS: Application[] = [
     shortDescription:
       "Centralized food preparation facilities and commissary kitchens preparing daily batch production.",
     fullDescription:
-      "Central food preparation facilities rely on robust commercial mixing equipment to standardize daily outputs across multiple distribution outlets while maintaining strict food hygiene protocols.",
+      "Central food preparation facilities rely on robust commercial food processing machinery to standardize daily outputs across multiple distribution outlets while maintaining strict food hygiene protocols.",
     iconName: "ChefHat",
     mixingUseCases: [
       "High-volume commissary ingredient blending",

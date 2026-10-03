@@ -81,7 +81,7 @@ export function generateOrganizationSchema() {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-89258-57821",
+      telephone: "+91-75500-16607",
       contactType: "sales",
       areaServed: "IN",
       availableLanguage: ["English", "Tamil", "Hindi"],
@@ -110,7 +110,7 @@ export function generateProductSchema(product: Product) {
       "@type": "Brand",
       name: SITE_CONFIG.name,
     },
-    category: "Commercial Food Mixing Equipment",
+    category: "Commercial Food Processing Machinery",
     url: `${SITE_CONFIG.domain}/products/${product.slug}`,
   };
 }

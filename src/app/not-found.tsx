@@ -20,7 +20,7 @@ export default function NotFound() {
             Page Not Found
           </h1>
           <p className="mt-3 text-sm text-slate-600 leading-relaxed font-normal">
-            The page you&apos;re looking for may have moved or no longer exists. Explore our confirmed commercial mixing machinery or return to the main portal.
+            The page you&apos;re looking for may have moved or no longer exists. Explore our confirmed commercial food processing machinery or return to the main portal.
           </p>
         </div>
 

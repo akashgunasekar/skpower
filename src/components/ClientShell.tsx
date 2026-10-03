@@ -20,7 +20,7 @@ export const useQuoteModal = () => useContext(QuoteContext);
 
 export default function ClientShell({ children }: { children: React.ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState("Planetary Mixer Machine – Gas");
+  const [selectedProduct, setSelectedProduct] = useState("Planetary Mixer Machine – Gas / Induction");
 
   const openQuoteModal = (productName?: string) => {
     if (productName) {

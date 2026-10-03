@@ -13,7 +13,7 @@ interface QuoteCTAProps {
 
 export default function QuoteCTA({
   onRequestQuote,
-  title = "Ready to Discuss Commercial Mixing Equipment?",
+  title = "Ready to Discuss Commercial Food Processing Machinery?",
   description = "Connect with our technical team to discuss machine sizing, batch requirements, and commercial details for your kitchen operation.",
 }: QuoteCTAProps) {
   return (

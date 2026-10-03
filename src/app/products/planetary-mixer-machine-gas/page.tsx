@@ -7,9 +7,9 @@ import { constructMetadata, generateProductSchema, generateBreadcrumbSchema } fr
 const PRODUCT_SLUG = "planetary-mixer-machine-gas";
 
 export const metadata = constructMetadata({
-  title: "Planetary Mixer Machine Gas | SK Power Cook Machinery",
+  title: "Planetary Mixer Machine Gas / Induction | SK Power Cook Machinery",
   description:
-    "Planetary Mixer Machine – Gas by SK Power Cook Machinery. Commercial mixing equipment with integrated heating for professional food preparation environments.",
+    "Planetary Mixer Machine – Gas / Induction by SK Power Cook Machinery. Commercial food processing machinery with integrated Gas / Induction heating for professional food preparation environments.",
   canonicalPath: `/products/${PRODUCT_SLUG}`,
 });
 

@@ -10,9 +10,9 @@ import GroupBrands from "@/components/GroupBrands";
 import QuoteCTA from "@/components/QuoteCTA";
 
 export const metadata = constructMetadata({
-  title: "Commercial Mixing Machine Applications | SK Power Cook Machinery",
+  title: "Commercial Food Processing Machinery Applications | SK Power Cook Machinery",
   description:
-    "Explore practical commercial applications for SK Power Cook mixing machines, including commercial kitchens, food preparation units, catering operations, and professional culinary production.",
+    "Explore practical commercial applications for SK Power Cook food processing machinery, including commercial kitchens, food preparation units, catering operations, and professional culinary production.",
   canonicalPath: "/applications",
 });
 
@@ -40,11 +40,11 @@ export default function ApplicationsPage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-              Commercial Mixing Machine Applications
+              Commercial Food Processing Machinery Applications
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Purpose-engineered mixing equipment tailored for professional food preparation environments, centralized kitchens, and commercial culinary operations.
+              Purpose-engineered food processing machinery tailored for professional food preparation environments, centralized kitchens, and commercial culinary operations.
             </p>
           </div>
         </div>

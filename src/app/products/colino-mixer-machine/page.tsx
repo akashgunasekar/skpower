@@ -7,9 +7,9 @@ import { constructMetadata, generateProductSchema, generateBreadcrumbSchema } fr
 const PRODUCT_SLUG = "colino-mixer-machine";
 
 export const metadata = constructMetadata({
-  title: "Colino Mixer Machine | SK Power Cook Machinery",
+  title: "Colino Mixer Machine Gas / Induction | SK Power Cook Machinery",
   description:
-    "Colino Mixer Machine by SK Power Cook Machinery. Commercial mixing machine designed for professional food preparation environments and commercial kitchens.",
+    "Colino Mixer Machine – Gas / Induction by SK Power Cook Machinery. Commercial food processing machinery with Gas / Induction heating designed for professional food preparation environments and commercial kitchens.",
   canonicalPath: `/products/${PRODUCT_SLUG}`,
 });
 

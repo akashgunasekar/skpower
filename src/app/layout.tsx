@@ -20,11 +20,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   ...constructMetadata({
-    title: "SK Power Cook Machinery | Commercial Mixing Machines",
+    title: "SK Power Cook Machinery | Commercial Food Processing Machinery & Solutions",
     description:
-      "SK Power Cook Machinery provides professional commercial mixing machines including Planetary Mixer Machine – Gas and Colino Mixer Machine for professional food preparation environments.",
+      "SK Power Cook Machinery provides commercial food processing solution machinery including Planetary Mixer Machine – Gas / Induction and Colino Mixer Machine – Gas / Induction for professional food preparation environments.",
   }),
-  metadataBase: new URL("https://skpowercook.example"),
+  metadataBase: new URL("https://skpcm.com"),
   icons: {
     icon: "/brands/sk-powercook-logo.png",
     apple: "/brands/sk-powercook-logo.png",
