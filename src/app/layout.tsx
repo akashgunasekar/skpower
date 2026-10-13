@@ -50,6 +50,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
+        {/* Maxwell CRM Connector */}
+        <script
+          src="https://crm.vfegroups.com/embed.js"
+          data-key="mx_8226ea4d6661eae17d104629e83c8a79222bd0442423c41a"
+          defer
+        />
       </head>
       <body className="antialiased bg-white text-slate-900 selection:bg-orange-100 selection:text-orange-900">
         <ClientShell>{children}</ClientShell>

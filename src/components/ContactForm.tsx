@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Send, CheckCircle2, MessageSquare, AlertCircle, Phone, Mail, MapPin } from "lucide-react";
-import WhatsAppIcon from "./WhatsAppIcon";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Send, CheckCircle2 } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 
 interface ContactFormProps {
@@ -16,6 +16,8 @@ export default function ContactForm({
   onSuccess,
   isModal = false,
 }: ContactFormProps) {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     companyName: "",
@@ -28,7 +30,7 @@ export default function ContactForm({
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitted, setSubmitted] = useState(false);
-  const [submissionType, setSubmissionType] = useState<"whatsapp" | "email">("whatsapp");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [prevProduct, setPrevProduct] = useState(initialProduct);
   if (initialProduct !== prevProduct) {
@@ -63,42 +65,53 @@ export default function ContactForm({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validate()) {
       return;
     }
 
-    // Prepare message body
-    const enquiryDetails = `Commercial Food Processing Machinery Enquiry:
-- Name: ${formData.name}
-- Company: ${formData.companyName || "Not specified"}
-- Phone: ${formData.phone}
-- Email: ${formData.email || "Not specified"}
-- Location: ${formData.location || "Not specified"}
-- Product Interest: ${formData.productInterest}
-- Message / Scope: ${formData.message || "Requesting technical specifications and quote."}`;
+    setIsSubmitting(true);
 
-    if (submissionType === "whatsapp") {
-      const waDigits = SITE_CONFIG.contact.whatsapp.replace(/[^0-9]/g, "");
-      const waUrl = `https://wa.me/${waDigits}?text=${encodeURIComponent(enquiryDetails)}`;
-      window.open(waUrl, "_blank");
-    } else {
-      const mailtoUrl = `mailto:${SITE_CONFIG.contact.email}?subject=${encodeURIComponent(
-        `Enquiry: ${formData.productInterest} - ${formData.name}`
-      )}&body=${encodeURIComponent(enquiryDetails)}`;
-      window.location.href = mailtoUrl;
-    }
+    try {
+      const payload = {
+        name: formData.name,
+        company: formData.companyName,
+        phone: formData.phone,
+        email: formData.email,
+        location: formData.location,
+        product: formData.productInterest,
+        productInterest: formData.productInterest,
+        message: formData.message,
+        page_url: typeof window !== "undefined" ? window.location.href : "",
+      };
 
-    setSubmitted(true);
-    if (onSuccess) {
-      setTimeout(onSuccess, 1500);
+      await fetch("https://crm.vfegroups.com/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": "mx_8226ea4d6661eae17d104629e83c8a79222bd0442423c41a",
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("[Maxwell CRM] Lead submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+
+      if (onSuccess) {
+        onSuccess();
+      }
+
+      router.push("/thank-you");
     }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setIsSubmitting(false);
     setFormData({
       name: "",
       companyName: "",
@@ -137,7 +150,13 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form
+      data-maxwell-crm=""
+      data-success-url="/thank-you"
+      onSubmit={handleSubmit}
+      className="space-y-5"
+      noValidate
+    >
       {/* Name & Company */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
@@ -146,6 +165,7 @@ export default function ContactForm({
           </label>
           <input
             id="contact-name"
+            name="name"
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -164,6 +184,7 @@ export default function ContactForm({
           </label>
           <input
             id="contact-company"
+            name="company"
             type="text"
             value={formData.companyName}
             onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
@@ -181,6 +202,7 @@ export default function ContactForm({
           </label>
           <input
             id="contact-phone"
+            name="phone"
             type="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -199,6 +221,7 @@ export default function ContactForm({
           </label>
           <input
             id="contact-email"
+            name="email"
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -219,6 +242,7 @@ export default function ContactForm({
           </label>
           <input
             id="contact-location"
+            name="location"
             type="text"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
@@ -233,6 +257,7 @@ export default function ContactForm({
           </label>
           <select
             id="contact-product"
+            name="product"
             value={formData.productInterest}
             onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-orange-500 text-sm text-slate-900 bg-white transition-colors cursor-pointer"
@@ -255,6 +280,7 @@ export default function ContactForm({
         </label>
         <textarea
           id="contact-message"
+          name="message"
           rows={isModal ? 3 : 4}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -263,48 +289,25 @@ export default function ContactForm({
         />
       </div>
 
-      {/* Channel selector */}
-      <div className="pt-1">
-        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-          Preferred Enquiry Submission Channel:
-        </label>
-        <div className="grid grid-cols-2 gap-3">
-          <button
-            type="button"
-            onClick={() => setSubmissionType("whatsapp")}
-            className={`py-2.5 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              submissionType === "whatsapp"
-                ? "bg-green-50 border-green-500 text-green-800 shadow-2xs"
-                : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
-            }`}
-          >
-            <WhatsAppIcon className="w-4 h-4 text-[#25D366] fill-current" />
-            <span>Direct WhatsApp</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setSubmissionType("email")}
-            className={`py-2.5 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-              submissionType === "email"
-                ? "bg-orange-50 border-orange-500 text-orange-800 shadow-2xs"
-                : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
-            }`}
-          >
-            <Mail className="w-4 h-4 text-orange-600" />
-            <span>Official Email</span>
-          </button>
-        </div>
-      </div>
 
       {/* Submit Button */}
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-6 rounded-xl text-sm font-bold uppercase tracking-wider bg-orange-600 hover:bg-orange-700 text-white shadow-sm shadow-orange-600/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
+          disabled={isSubmitting}
+          className="w-full py-3.5 px-6 rounded-xl text-sm font-bold uppercase tracking-wider bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white shadow-sm shadow-orange-600/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
         >
-          <Send className="w-4 h-4" />
-          <span>Request a Quote</span>
+          {isSubmitting ? (
+            <>
+              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <span>Submitting Enquiry...</span>
+            </>
+          ) : (
+            <>
+              <Send className="w-4 h-4" />
+              <span>Request a Quote</span>
+            </>
+          )}
         </button>
 
         <p className="mt-2.5 text-[11px] text-center text-slate-500">
